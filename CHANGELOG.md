@@ -3,6 +3,23 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.4.0] - 2026-07-13
+
+### Hinzugefügt
+- **Live-Fallback mit Cache (BMS)**: Ruft eine Adresse eine Straße auf, der
+  für Restabfall/Bioabfall/Papier noch die Zuordnung fehlt, wird der
+  BMS-ICS-Feed einmalig live geholt und dauerhaft ins Zonenmodell übernommen
+  (identisches Terminmuster → bestehende Zone, sonst neue). Tagesdrossel je
+  Straße + Disk-Cache verhindern unnötige Anfragen an insert-it.de;
+  Upstream-Ausfälle beeinträchtigen den Seitenaufbau nicht. Ergänzt nur in
+  bereits veröffentlichte Jahrespläne (Review-Prinzip bleibt gewahrt).
+
+### Geändert
+- **Typewriter läuft immer**: Der statische prefers-reduced-motion-Fallback
+  entfiel als Produktentscheidung (unter Windows ist die Einstellung oft
+  systemweit aktiv, wodurch der Effekt „verschwand"). Screenreader erhalten
+  weiterhin den statischen sr-only-Text.
+
 ## [0.3.0] - 2026-07-13
 
 ### Hinzugefügt
