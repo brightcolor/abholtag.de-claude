@@ -3,6 +3,27 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.2.0] - 2026-07-12
+
+### Hinzugefügt
+- **BMS-Adressstamm (EBL-Online-Abfallkalender)**: neues Management-Command
+  `import_bms_addresses` importiert 2.594 Straßen (bmsStreetId) und 45.054
+  Hausnummern (bmsLocationId) aus `data/bms/*.json` oder live per `--scrape`
+  (User-Agent, max. 4 parallel, Retries, 404-Sonderfall Geniner Ufer).
+  Neues Modell `HouseNumber`, `Street.bms_street_id`; geteilte Location-IDs
+  werden unterstützt. 1.705 PDF-Straßen automatisch verknüpft.
+- **Abfallarten vorbereitet**: Restabfall, Bioabfall, Papier (PPK) als inaktive
+  WasteTypes angelegt; der BMS-ICS-Endpunkt (`Main/Calender`) liefert deren
+  Termine je Adresse und ist in docs/ANALYSE.md dokumentiert (Zonen-Clustering
+  als nächster Schritt).
+- **Terminseite**: Direktlink zum offiziellen EBL-Kalender der aufgelösten
+  Adresse (bmsStreetId + bmsLocationId), sofern die Hausnummer im
+  BMS-Datenbestand existiert.
+
+### Behoben
+- 9 Artefakt-Straßen aus dem PDF-Import (verschmolzene Doppelnamen,
+  Bereichsfragmente) deaktiviert und zur Prüfung markiert.
+
 ## [0.1.3] - 2026-07-12
 
 ### Hinzugefügt

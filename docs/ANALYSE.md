@@ -64,3 +64,27 @@ Bürgerbestätigung.
 Gegen die Ausgabe 2026: **Jahr erkannt, 1.738 Straßeneinträge, 260 Kalendertermine**,
 alle Bezirke vollständig (A–H, J: 26; I: 27; C: 25 mit dokumentierter Quell-Lücke),
 14-Tage-Rhythmus inkl. aller Feiertagsverschiebungen verifiziert.
+
+
+## Zweite Datenquelle: EBL-Online-Abfallkalender (BMS / insert-it.de)
+
+Öffentliche JSON-Endpunkte ohne Auth (Basis `https://insert-it.de/BMSAbfallkalenderLuebeck`):
+
+| Endpunkt | Zweck | Besonderheiten |
+|---|---|---|
+| `Main/GetStreets?text=<prefix>` | Straße → bmsStreetId | startsWith-Match; leerer Präfix liefert `[]`; Vollabruf über a–z, 0–9, äöüß + Dedupe → 2.594 Straßen |
+| `Main/GetLocations?streetId=<id>&houseNumber=` | Hausnummern → bmsLocationId | leere houseNumber = alle; Straße 3713 („Geniner Ufer") liefert 404 → als „keine Hausnummern" behandeln; ~861 Straßen ohne Hausnummern; Location-IDs **nicht eindeutig** (gemeinsame Müllplätze, z. B. Achternhof 21–31) |
+| `Main/Calender?bmsLocationId=<id>&year=<jahr>` | **ICS-Feed je Adresse** | text/calendar; enthält Restabfall (26×/Jahr), Bioabfall (26×), PPK/Papier (13×) – **kein Gelber Sack** (der läuft über Veolia/PDF) |
+| `Main/Pdf?bmsLocationId=<id>&year=<jahr>` | PDF-Kalender je Adresse | |
+
+Import: `manage.py import_bms_addresses` (Referenzdaten `data/bms/*.json`, live-Abruf mit
+`--scrape`: UA-Header, max. 4 parallel, Retries). Abgleich mit dem PDF-Straßenstamm über
+die Namens-Normalisierung: 1.705/1.729 Straßen verknüpft; Nicht-Treffer sind echte
+Schreibweisen-Differenzen (z. B. PDF „Alexander-Flemming-Str." vs. BMS
+„Alexander-Fleming-Straße" – Tippfehler im PDF) und werden im Importlauf gelistet.
+
+**Weg zu den weiteren Abfallarten:** Der ICS-Feed ist adressbezogen (45.054 Locations –
+zu viele für Vollabruf). Da Leerungen tourenbasiert sind, genügt **eine Location je
+Straße** (~1.700 Abrufe), um je Abfallart die Terminmuster zu clustern und daraus
+Abfuhrbezirke abzuleiten – danach funktioniert das bestehende Zonen-Modell unverändert
+(ScheduleYear/CollectionDate je WasteType). Siehe docs/ROADMAP.md.

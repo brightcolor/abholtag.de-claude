@@ -26,7 +26,7 @@
 2. Visuelle Diff-Ansicht für Straßen-Diffs im Admin (aktuell JSON + Command)
 3. Vorschlags-Detailseite öffentlich (Bestätigen-Button aus der Terminansicht heraus)
 4. Benutzerkonten-Selbstverwaltung (Registrierung, eigene Meldungen einsehen)
-5. Zweite Abfallart (Blaue Tonne) inkl. zweitem Parser als Architektur-Beweis
+5. Restabfall/Bioabfall/Papier aktivieren: BMS-ICS je eine Location pro Straße abrufen, Terminmuster zu Zonen clustern, als ScheduleYears importieren (Adress-Stammdaten und WasteTypes sind seit v0.2.0 vorhanden)
 6. Konflikt-Dashboard (konkurrierende Werte nebeneinander, §26-Visualisierung)
 7. XLSX-/PDF-Export der Statistik, /metrics (Prometheus)
 8. E-Mail-Bestätigung für Melder (Opt-in), i18n-Vorbereitung
