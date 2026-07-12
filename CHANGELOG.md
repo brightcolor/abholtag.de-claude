@@ -3,6 +3,19 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.1.2] - 2026-07-12
+
+### Behoben
+- **Sperrschrift-Straßennamen**: ~1.300 Zeilen der PDF-Straßenliste sind gesperrt
+  gedruckt ("K a h l h o r s t s t r .") und wurden bisher fehlerhaft übernommen.
+  Der Parser rekonstruiert sie jetzt zuverlässig (Kollaps + Wortgrenzen an
+  Großbuchstaben/Ziffern, zusammengesetzte Präpositionen wie "An der",
+  Fragment-Zusammenführung); B/G-Doppelbezirke in Sperrschrift-Zeilen (99 statt
+  30 Innenstadt-Straßen) werden korrekt erkannt. Straßenstamm muss einmalig neu
+  geseedet werden (docs/BETRIEB.md).
+- Fehlende FontAwesome-TTF-Webfonts vendoriert (collectstatic/Manifest-Storage
+  schlug im Docker-Build fehl).
+
 ## [0.1.1] – 2026-07-12
 
 ### Hinzugefügt
