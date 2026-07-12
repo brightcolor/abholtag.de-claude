@@ -19,3 +19,4 @@ docker-data/
 *.pdf
 # Test-Fixture: archivierte Kopie des offiziellen Plans (Tests ohne Netzzugriff)
 !data/samples/*.pdf
+data/bms/ics_cache/

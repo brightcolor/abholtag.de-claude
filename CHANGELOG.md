@@ -3,6 +3,26 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.3.0] - 2026-07-13
+
+### Hinzugefügt
+- **Restabfall, Bioabfall und Papier (PPK) sind live** – in Terminansicht,
+  Jahresübersicht, Druckansicht und allen ICS-Feeds (`all.ics` sowie je
+  Abfallart, z. B. `/calendar/address/<id>/restabfall.ics`).
+- Neues Command `import_bms_schedules --year <jahr>`: ruft den BMS-ICS-Feed
+  für eine Location je Straße ab (≤4 parallel, Disk-Cache, Retries), clustert
+  identische Terminmuster je Abfallart zu Abfuhrbezirken (2026: Restabfall 48,
+  Bioabfall 33, Papier 48 Zonen) und erzeugt Zuordnungen + Jahrespläne mit dem
+  gewohnten Review-/Publish-Gate. Re-Runs bauen die abgeleiteten
+  BMS-Zuordnungen neu auf; manuelle Korrekturen bleiben erhalten.
+- Kreuzvalidierung: gespeicherte Termine sind 1:1 identisch mit dem
+  EBL-Quell-ICS (stichprobenverifiziert).
+
+### Hinweis
+- Je Straße wird eine Location gesampelt; sollte eine Straße hausnummern-
+  abhängig auf mehrere Touren aufgeteilt sein, gilt das Muster der Probe.
+  Der Direktlink zum offiziellen EBL-Kalender dient als Gegencheck.
+
 ## [0.2.0] - 2026-07-12
 
 ### Hinzugefügt
