@@ -3,6 +3,19 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.1.3] - 2026-07-12
+
+### Hinzugefügt
+- **Typewriter-Startseite**: Die Überschrift heißt jetzt korrekt
+  "Wann wird … abgeholt?" und tippt rotierend die Abfallarten (Gelber Sack,
+  Blaue/Graue/Braune/Gelbe Tonne, Restmüll, Bio-Tonne, Biomüll). Das Farbwort
+  erscheint in der Tonnenfarbe, "Tonne"/"Sack" in Standardfarbe; Gelb erhält
+  einen schwarzen, beim Tippen mitwachsenden Hintergrund (Lesbarkeit).
+- **Suchfeld-Typewriter**: Zufällige echte Straßennamen werden als Platzhalter
+  getippt und gelöscht, bis das Feld fokussiert wird oder Eingabe erfolgt.
+- Beide Effekte respektieren prefers-reduced-motion (statischer Fallback) und
+  sind für Screenreader ausgeblendet (statischer sr-only-Text).
+
 ## [0.1.2] - 2026-07-12
 
 ### Behoben
