@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+*.sqlite3
+media/
+staticfiles/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+docker-data/
+*.pdf
+# Test-Fixture: archivierte Kopie des offiziellen Plans (Tests ohne Netzzugriff)
+!data/samples/*.pdf
