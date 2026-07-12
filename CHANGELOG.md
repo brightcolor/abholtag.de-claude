@@ -3,6 +3,17 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.5.0] - 2026-07-13
+
+### Hinzugefügt
+- **Mehrfachauswahl der Abfallarten**: Auf der Startseite ersetzt eine
+  Chip-Auswahl (alle standardmäßig aktiv) das Einzel-Dropdown; die Terminseite
+  hat umschaltbare Filter-Chips je Abfallart. Die Auswahl wandert als
+  `?arten=slug1,slug2` durch Terminliste, Jahresübersicht, Abo-Seite,
+  ICS-Download und den kombinierten Feed (`all.ics?arten=…`); die API
+  akzeptiert `waste_type` jetzt auch als Kommaliste. Einzel-Feeds und der
+  Legacy-Parameter `abfallart` funktionieren unverändert.
+
 ## [0.4.0] - 2026-07-13
 
 ### Hinzugefügt
