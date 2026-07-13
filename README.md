@@ -24,6 +24,9 @@ Weitere Abfallarten (Papier, Restmüll, Bio, …) sind architektonisch vorbereit
 - 📊 **Interne Statistik** – datenschutzfreundlich (keine IPs, rotierende Hashes,
   Aggregation + Löschfristen), AdminLTE-Dashboard
 - 🌗 Light-/Darkmode, WCAG-orientiert, strikte CSP, keine externen Dienste
+- 🔎 **SEO** – Straßen-Landingpages (`/strasse/<slug>/`) und A–Z-Verzeichnis
+  (`/strassen/`), Sitemap/robots, Open Graph, JSON-LD (WebSite/SearchAction,
+  FAQPage, BreadcrumbList), IndexNow-Anbindung
 
 ## Schnellstart (Entwicklung)
 
@@ -76,6 +79,7 @@ Backup: [deploy/backup.sh](deploy/backup.sh)
 | [docs/ANALYTICS-DATENSCHUTZ.md](docs/ANALYTICS-DATENSCHUTZ.md) | Ereignisse, Pseudonymisierung, Löschkonzept |
 | [docs/MODERATION-QUORUM.md](docs/MODERATION-QUORUM.md) | Moderationshandbuch, Quorum-Regeln |
 | [docs/BETRIEB.md](docs/BETRIEB.md) | Deployment, Backup/Restore, Monitoring, Admin-Handbuch |
+| [docs/SEO.md](docs/SEO.md) | On-Page-Maßnahmen, IndexNow, Search-Console, Off-Page-Playbook |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Umsetzungsstand und nächste Schritte |
 | [docs/openapi.json](docs/openapi.json) | API-Spezifikation (auch unter `/api/v1/openapi.json`) |
 
