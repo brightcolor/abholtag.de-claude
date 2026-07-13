@@ -104,4 +104,4 @@ def test_subscribe_page_one_tap_links(setup, client):
     content = response.content.decode()
     assert response.status_code == 200
     assert 'href="webcal://' in content
-    assert "calendar.google.com/calendar/render?cid=webcal%3A%2F%2F" in content
+    assert "calendar.google.com/calendar/render?cid=http" in content  # https-URL, kein webcal (Google-Crawler)
