@@ -11,7 +11,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# rapidocr zieht das GUI-opencv als Dependency mit; im Slim-Image fehlt dessen
+# libxcb und das geteilte cv2-Paket zerbricht -> nur headless behalten.
+RUN pip install --no-cache-dir -r requirements.txt     && pip uninstall -y opencv-python     && pip install --no-cache-dir --force-reinstall --no-deps opencv-python-headless==4.11.0.86
 
 COPY . .
 
