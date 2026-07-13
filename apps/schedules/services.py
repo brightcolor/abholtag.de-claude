@@ -48,12 +48,16 @@ def upcoming_dates_for_address(address_key: AddressKey, waste_types=None, limit:
 
 def data_status():
     """Aggregate data freshness info for the public start page (§9)."""
-    from apps.addresses.models import Street
+    from apps.addresses.models import AssignmentStatus, Street
     from apps.waste_types.models import WasteType
 
     published_years = ScheduleYear.objects.filter(status=ScheduleYearStatus.PUBLISHED)
     return {
-        "street_count": Street.objects.filter(is_active=True).count(),
+        # "unterstützt" = tatsächlich auflösbar: aktiv UND mindestens eine
+        # aktive Tourenzuordnung (nicht bloß im Straßenstamm vorhanden)
+        "street_count": Street.objects.filter(
+            is_active=True, assignments__status=AssignmentStatus.ACTIVE
+        ).distinct().count(),
         "waste_type_count": WasteType.objects.filter(is_active=True).count(),
         "published_years": sorted({sy.year for sy in published_years}),
         "date_count": CollectionDate.objects.filter(
