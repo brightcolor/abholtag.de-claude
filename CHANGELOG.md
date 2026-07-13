@@ -3,6 +3,14 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.11.1] - 2026-07-13
+
+### Behoben
+- EBL-Import: Beim Umstieg von den BMS-Cluster-Zonen auf die amtlichen
+  Tourbuchstaben werden „neue Bezirke" und „alte Bezirke ohne Termine"
+  nicht mehr als Warnung gemeldet – das ist der erwartete Schema-Wechsel.
+  Ein sauberer `--publish`-Lauf meldet dadurch korrekt „abgeschlossen".
+
 ## [0.11.0] - 2026-07-13
 
 ### Hinzugefügt

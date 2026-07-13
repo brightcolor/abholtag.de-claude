@@ -81,6 +81,11 @@ def run_ebl_import(path, source_document=None, user=None, publish=False) -> Impo
                 blocking = True
                 continue
             issues = validate_plan(plan, wt)
+            # The EBL import replaces the whole zone scheme (BMS cluster codes
+            # → official letters), so "new zones" and "old zones now empty"
+            # are expected, not warnings – they would otherwise fire for every
+            # letter on every run.
+            issues = [i for i in issues if i["code"] not in ("new_zones", "zones_without_dates")]
             for issue in issues:
                 issue["waste_type"] = slug
             all_issues.extend(issues)
