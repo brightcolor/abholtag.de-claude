@@ -3,6 +3,27 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.11.0] - 2026-07-13
+
+### Hinzugefügt
+- **Offizieller EBL-Abfuhrplan als Primärquelle für alle vier Abfallarten**
+  (Restabfall, Bioabfall, Papier, Gelber Sack):
+  - Neuer, vollständig textbasierter Parser `luebeck_ebl` (kein OCR nötig)
+    liest Kalender und Straßenverzeichnis aus dem EBL-„Wegweiser"-PDF.
+  - **Hausnummern-genaue Zuordnung:** Straßen mit nach Hausnummer geteilten
+    Touren (z. B. Kahlhorststraße 1–16 → F, 17–Ende → D) lösen jetzt korrekt
+    auf – die größte Schwäche der bisherigen BMS-Stichprobe ist behoben.
+    `parse_house_ranges()` zerlegt 542 von 548 Bereichen automatisch; die 6
+    Sonderfälle werden zur Prüfung markiert statt geraten.
+  - Amtliche Tourbuchstaben (A–J bzw. A–T) als stabile Zonencodes; der frühere
+    BMS-Cluster-Code (R##/B##/P##) wird beim Umstieg abgelöst.
+  - Selbstvalidierender Kalenderparser (Wochentagsabgleich je Monatsspalte,
+    Vergleich beider Kalenderkopien) – robust auch für den Folgejahres-Plan.
+  - Ergänzt den im Veolia-PDF fehlenden 13.-Mai-Termin (Bezirk C).
+  - Neues Kommando `import_ebl` (mit `--publish`), Anbindung an
+    `fetch_waste_source` für die jährliche Automatik, Doku in
+    [docs/EBL-IMPORT.md](docs/EBL-IMPORT.md).
+
 ## [0.10.1] - 2026-07-13
 
 ### Behoben
