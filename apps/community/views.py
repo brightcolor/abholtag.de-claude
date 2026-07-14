@@ -63,6 +63,28 @@ def report_status(request, token):
     return render(request, "community/report_status.html", {"report": report})
 
 
+def report_status_lookup(request):
+    """Public 'enter your Vorgangsnummer to look up its status' form.
+
+    The confirmation page hands out a public token; this lets people come back
+    later and reach their report's status page without saving the direct link.
+    """
+    code = (request.GET.get("nummer") or request.POST.get("nummer") or "").strip().upper()
+    error = None
+
+    if code:
+        if is_rate_limited(request, "status_lookup"):
+            return HttpResponse("Zu viele Anfragen. Bitte versuchen Sie es später erneut.", status=429)
+
+        report = ErrorReport.objects.filter(public_token=code).first()
+        if report:
+            return redirect("report_status", token=report.public_token)
+
+        error = "Zu dieser Vorgangsnummer wurde keine Meldung gefunden. Bitte prüfen Sie die Eingabe."
+
+    return render(request, "community/report_status_lookup.html", {"code": code, "error": error})
+
+
 def confirm_proposal(request, pk):
     """Public confirmation of a proposal (quorum building, §22)."""
     if request.method != "POST":

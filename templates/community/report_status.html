@@ -44,9 +44,18 @@
             {% endif %}
           </dl>
 
-          <a href="/" class="ak-btn ak-btn-outline mt-2">
-            <i class="fa-solid fa-house" aria-hidden="true"></i> Zur Startseite
-          </a>
+          <div class="mt-2">
+            <a href="/" class="ak-btn ak-btn-outline">
+              <i class="fa-solid fa-house" aria-hidden="true"></i> Zur Startseite
+            </a>
+            <a href="{% url 'report_status_lookup' %}" class="ak-btn ak-btn-ghost">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Andere Meldung abrufen
+            </a>
+          </div>
+          <p class="mt-3" style="color: var(--ak-text-muted); font-size: .85rem;">
+            Tipp: Notieren Sie sich die Vorgangsnummer. Sie können den Status später jederzeit unter
+            <strong>{{ SITE_NAME|default:"abholtag.de" }}/melden/status/</strong> mit dieser Nummer abrufen.
+          </p>
         </div>
       </div>
     </div>

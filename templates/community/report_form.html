@@ -17,6 +17,10 @@
             Sie haben einen falschen Termin, eine fehlende Straße oder ein anderes Problem entdeckt?
             Ihre Meldung hilft allen – danke! Eine Angabe von Kontaktdaten ist nicht erforderlich.
           </p>
+          <p style="font-size: .9rem;">
+            Sie haben bereits eine Vorgangsnummer?
+            <a href="{% url 'report_status_lookup' %}">Status Ihrer Meldung abrufen</a>.
+          </p>
 
           {% if address_key %}
             <div class="ak-alert ak-alert-info mb-3">

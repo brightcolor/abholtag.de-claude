@@ -226,6 +226,7 @@ RATE_LIMITS = {
     "api": (env_int("RATE_LIMIT_API", 120), 60),
     "report": (env_int("RATE_LIMIT_REPORT", 5), 600),
     "vote": (env_int("RATE_LIMIT_VOTE", 10), 600),
+    "status_lookup": (env_int("RATE_LIMIT_STATUS_LOOKUP", 20), 60),
 }
 
 # Minimum seconds a report form must be open before submission (bot protection)

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Status abrufen – {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <div class="ak-card">
+        <div class="ak-card-body">
+          <h1 class="h4" style="font-weight: 800;">
+            <i class="fa-solid fa-magnifying-glass" style="color: var(--ak-brand);" aria-hidden="true"></i>
+            Status einer Meldung abrufen
+          </h1>
+          <p style="color: var(--ak-text-muted);">
+            Geben Sie Ihre Vorgangsnummer ein – die haben Sie nach dem Absenden Ihrer Meldung erhalten.
+          </p>
+
+          {% if error %}
+            <div class="ak-field-error mb-3">{{ error }}</div>
+          {% endif %}
+
+          <form method="post" action="{% url 'report_status_lookup' %}">
+            {% csrf_token %}
+            <label for="nummer" style="font-weight: 600; display: block; margin-bottom: .35rem;">Vorgangsnummer</label>
+            <input type="text" id="nummer" name="nummer" class="ak-input" value="{{ code }}"
+                   placeholder="z. B. ACC4D83K29" autocomplete="off" autocapitalize="characters"
+                   required maxlength="12" style="text-transform: uppercase;">
+            <div class="mt-3">
+              <button type="submit" class="ak-btn ak-btn-primary">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Status anzeigen
+              </button>
+              <a href="/" class="ak-btn ak-btn-outline">Zur Startseite</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
