@@ -3,6 +3,17 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.14.0] - 2026-07-16
+
+### Hinzugefügt
+- **Seite „Datenquelle & Nutzung"** (`/datenquelle/`, im Footer verlinkt): legt
+  transparent offen, dass alle Termine aus dem offiziellen Abfuhrplan der
+  Entsorgungsbetriebe Lübeck (EBL) stammen (mit Link zum Quell-PDF und zu
+  entsorgung.luebeck.de), erklärt die maschinelle Aufbereitung, den
+  unabhängigen/gemeinnützigen/werbefreien Charakter, den Haftungsausschluss
+  („ohne Gewähr“, verbindlich sind die EBL-Pläne) und den Stand zur
+  Nutzungserlaubnis/Datenlizenz.
+
 ## [0.13.0] - 2026-07-14
 
 ### Hinzugefügt
