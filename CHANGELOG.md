@@ -3,6 +3,13 @@
 Alle nennenswerten Änderungen dieses Projekts. Format angelehnt an
 [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [0.14.5] - 2026-10-09
+
+### Sicherheit
+- Django 5.2.17 (vorher 5.2.4) mit den Sicherheitskorrekturen der Fassungen 5.2.5 bis
+  5.2.17, requests 2.33.0. Für die Tests pytest 9.0.3. `pip-audit` meldet für
+  `requirements.txt` keine bekannte Schwachstelle.
+
 ## [0.14.4] - 2026-07-16
 
 ### Geändert
